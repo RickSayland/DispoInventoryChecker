@@ -33,8 +33,15 @@ var charts = {
         .done((d) => {
             var deets = JSON.parse(d);
             deets.forEach(element => {
-                TrulieveAPI.chartLocations.push(TrulieveAPI.getLocationName(element.id));
-                TrulieveAPI.chartstocks.push(element.stock);                          
+                 if (document.getElementById('chkHideNegative').checked && element.stock <= 0 )
+                {
+
+                }
+                else
+                {
+                    TrulieveAPI.chartLocations.push(TrulieveAPI.getLocationName(element.id));
+                    TrulieveAPI.chartstocks.push(element.stock); 
+                }                          
             });
         })
         .always(() => {
@@ -50,6 +57,4 @@ var charts = {
             charts.chart.update();
         })
     }
-
-
 }
