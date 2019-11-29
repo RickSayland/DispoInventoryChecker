@@ -137,15 +137,27 @@ var TrulieveAPI = {
   },
   getProductName: (sku) => {
     switch(sku) {
+      case "FINP-FLJ-S-9":
+        return "TruFlower Pre-Roll 1 Gram - Sour Diesel"
+        break;
+      case "FINP-FLJ-S-3":
+        return "TruFlower Pre-Roll 1 Gram - Dutch Hawaiian"
+        break;
       case "FINP-FLJ-S-4":
-        return "Tampa"
+        return "TruFlower Pre-Roll 1 Gram - Green Crack"
+        break;
+      case "FINP-FLJ-S-5":
+        return "TruFlower Pre-Roll 1 Gram - Jack Herer"
+        break;
+      case "FINP-FLJ-S-14":
+        return "TruFlower Pre-Roll 1 Gram - White Buffalo"
         break;
       case "FINP-FL-3.5G-S-5":
         return "TruFlower Sativa Jack Herer 3.5G"
         break;
       case "FINP-FL-3.5G-H-19":
-          return "TruFlower Hybrid Gorilla Grapes 3.5G"
-          break;
+        return "TruFlower Hybrid Gorilla Grapes 3.5G"
+        break;
       default:
         return "WEEEEEED"
     } 
