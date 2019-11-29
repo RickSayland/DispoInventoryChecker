@@ -50,7 +50,8 @@
             </div>
             <script>
                 $( document ).ready(function() {
-                    TrulieveAPI.getItemMultiInventory("FINP-FL-3.5G-H-19")
+                    //Make initial chart with Blue River™ Rosin - Puck Yeah
+                    TrulieveAPI.getItemMultiInventory("FINP-ROS-1G-I-15")
                     .done((d) => {
                         var deets = JSON.parse(d);
                         deets.forEach(element => {

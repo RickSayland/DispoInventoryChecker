@@ -12,7 +12,7 @@ var charts = {
         data: {
             labels: labelData,
             datasets: [{
-                label: "WEED",
+                label: TrulieveAPI.getProductName("FINP-ROS-1G-I-15"),
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgb(255, 99, 132)',
                 data: dataData
@@ -24,8 +24,6 @@ var charts = {
 
         }
         });
-
-        chart.destoy();
     },
     updateChart: (SKU) => {
         //clear out data
