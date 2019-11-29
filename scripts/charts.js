@@ -1,27 +1,57 @@
 var charts = {
 
-    makeBarChart: (chartId, name) => {
+    chart: {}, //refernce to chart
+    makeBarChart: (chartId, labelData, dataData) => {
         var ctx = document.getElementById(chartId).getContext('2d');
-                                var chart = new Chart(ctx, {
-                                // The type of chart we want to create
-                                type: 'horizontalBar',
-                            
-                                // The data for our dataset
-                                data: {
-                                    labels: TrulieveAPI.chartLocations,
-                                    datasets: [{
-                                        label: name,
-                                        backgroundColor: 'rgb(255, 99, 132)',
-                                        borderColor: 'rgb(255, 99, 132)',
-                                        data: TrulieveAPI.chartstocks
-                                    }]
-                                },
-                            
-                                // Configuration options go here
-                                options: {
 
-                                }
-                                });
+        charts.chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'horizontalBar',
+        
+        // The data for our dataset
+        data: {
+            labels: labelData,
+            datasets: [{
+                label: "WEED",
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: dataData
+            }]
+        },
+        
+        // Configuration options go here
+        options: {
+
+        }
+        });
+
+        chart.destoy();
+    },
+    updateChart: (SKU) => {
+        //clear out data
+        TrulieveAPI.chartLocations = [];
+        TrulieveAPI.chartstocks = [];
+        //Lookup and populate chart
+        TrulieveAPI.getItemMultiInventory(SKU)
+        .done((d) => {
+            var deets = JSON.parse(d);
+            deets.forEach(element => {
+                TrulieveAPI.chartLocations.push(TrulieveAPI.getLocationName(element.id));
+                TrulieveAPI.chartstocks.push(element.stock);                          
+            });
+        })
+        .always(() => {
+            charts.chart.data = {
+                labels: TrulieveAPI.chartLocations,
+                datasets: [{
+                    label: TrulieveAPI.getProductName(SKU),
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: TrulieveAPI.chartstocks
+                }]
+            };
+            charts.chart.update();
+        })
     }
 
 

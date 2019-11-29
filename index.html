@@ -20,14 +20,12 @@
                     <!-- Example single danger button -->
                     <div class="btn-group">
                         <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            TruFlower Hybrid Gorilla Grapes
+                            Choose Item
                         </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Separated link</a>
+                        <div id="itemSelect" class="dropdown-menu">
+                            <!-- <div class="dropdown-divider"></div> -->
+                            <a class="dropdown-item" href="#" onclick="charts.updateChart('FINP-FL-3.5G-S-5')">TruFlower Sativa Jack Herer 3.5G</a>
+                            <a class="dropdown-item" href="#" onclick="charts.updateChart('FINP-FL-3.5G-H-19')">TruFlower Hybrid Gorilla Grapes 3.5G</a>
                         </div>
                     </div>
                 </div>
@@ -39,12 +37,7 @@
             </div>
             </div>
             <script>
-                // TrulieveAPI.getItemInventory(8,"FINP-FLJ-S-4")
-                //     .done((d) => {
-                //         var deets = JSON.parse(d);
-                //         if (deets.success == "true") alert("success: " + deets.success +" Stock: " + deets.stock);
-                //         if (deets.success == "false") alert("success: " + deets.success +" Error: " + deets.error);
-                //     });
+                $( document ).ready(function() {
                     TrulieveAPI.getItemMultiInventory("FINP-FL-3.5G-H-19")
                     .done((d) => {
                         var deets = JSON.parse(d);
@@ -54,8 +47,9 @@
                         });
                     })
                     .always(() => {
-                        charts.makeBarChart('myChart',"FINP-FL-3.5G-H-19 = TruFlower Hybrid Gorilla Grapes");
+                        charts.makeBarChart('myChart',TrulieveAPI.chartLocations,TrulieveAPI.chartstocks);
                     })
+                });
             </script>
     </body>
 </html>

@@ -143,8 +143,11 @@ var TrulieveAPI = {
       case "FINP-FL-3.5G-S-5":
         return "TruFlower Sativa Jack Herer 3.5G"
         break;
+      case "FINP-FL-3.5G-H-19":
+          return "TruFlower Hybrid Gorilla Grapes 3.5G"
+          break;
       default:
-        return locationId
+        return "WEEEEEED"
     } 
   }
 
