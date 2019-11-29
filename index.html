@@ -1,13 +1,46 @@
 <html>
     <head>
         <meta charset="utf-8"/>
+        <!-- BootStrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!-- JQuery  -->
+        <script src="scripts/jquery-3.4.1.min.js"></script>
+        <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+        <!-- PopperJS and BootstrapJS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!-- ChartJS -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-        <script src="jquery-3.4.1.min.js"></script>
-        <script src="TrulieveAPI.js"></script>
-        <script src="charts.js"></script>
+        <script src="scripts/jquery-3.4.1.min.js"></script>
+        <!-- My Scripts -->
+        <script src="scripts/TrulieveAPI.js"></script>
+        <script src="scripts/charts.js"></script>
     </head>
     <body>
-            <canvas id="myChart"></canvas>
+        <div class="container">
+            <div class="row">
+                <div class="col-2">         
+                    <!-- Example single danger button -->
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                         Action
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-10">
+                    <div>
+                        <canvas id="myChart" width="920" height="800"></canvas>
+                    </div>
+                </div>
+            </div>
+            </div>
             <script>
                 // TrulieveAPI.getItemInventory(8,"FINP-FLJ-S-4")
                 //     .done((d) => {
@@ -15,14 +48,16 @@
                 //         if (deets.success == "true") alert("success: " + deets.success +" Stock: " + deets.stock);
                 //         if (deets.success == "false") alert("success: " + deets.success +" Error: " + deets.error);
                 //     });
-                    TrulieveAPI.getItemMultiInventory("FINP-FLJ-S-4")
+                    TrulieveAPI.getItemMultiInventory("FINP-FL-3.5G-H-19")
                     .done((d) => {
                         var deets = JSON.parse(d);
                         deets.forEach(element => {
                             TrulieveAPI.chartLocations.push(TrulieveAPI.getLocationName(element.id));
-                            TrulieveAPI.chartstocks.push(element.stock);
-                            charts.makeBarChart('myChart',"FINP-FLJ-S-4");
+                            TrulieveAPI.chartstocks.push(element.stock);                          
                         });
+                    })
+                    .always(() => {
+                        charts.makeBarChart('myChart',"FINP-FL-3.5G-H-19 = TruFlower Hybrid Gorilla Grapes");
                     })
             </script>
     </body>

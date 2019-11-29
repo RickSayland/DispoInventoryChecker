@@ -4,7 +4,7 @@ var charts = {
         var ctx = document.getElementById(chartId).getContext('2d');
                                 var chart = new Chart(ctx, {
                                 // The type of chart we want to create
-                                type: 'bar',
+                                type: 'horizontalBar',
                             
                                 // The data for our dataset
                                 data: {
@@ -18,7 +18,9 @@ var charts = {
                                 },
                             
                                 // Configuration options go here
-                                options: {}
+                                options: {
+
+                                }
                                 });
     }
 
