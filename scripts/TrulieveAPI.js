@@ -139,7 +139,6 @@ var TrulieveAPI = {
     switch(sku) {
       case "FINP-FLJ-S-9":
         return "TruFlower Pre-Roll 1 Gram - Sour Diesel"
-        break;
       case "FINP-FLJ-S-3":
         return "TruFlower Pre-Roll 1 Gram - Dutch Hawaiian"
         break;
@@ -158,6 +157,12 @@ var TrulieveAPI = {
       case "FINP-FL-3.5G-H-19":
         return "TruFlower Hybrid Gorilla Grapes 3.5G"
         break;
+      case "FINP-ROS-1G-I-15":
+          return "Blue River™ Rosin - Puck Yeah"
+          break;
+      case "FINP-ROS-1G-I-1":
+          return "Blue River™ Rosin - 9LB Hammer"
+          break;
       default:
         return "WEEEEEED"
     } 
