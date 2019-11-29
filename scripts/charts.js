@@ -27,8 +27,7 @@ var charts = {
     },
     updateChart: (SKU) => {
         //clear out data
-        TrulieveAPI.chartLocations = [];
-        TrulieveAPI.chartstocks = [];
+        TrulieveAPI.clear();
         //Lookup and populate chart
         TrulieveAPI.getItemMultiInventory(SKU)
         .done((d) => {

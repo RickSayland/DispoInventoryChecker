@@ -166,6 +166,10 @@ var TrulieveAPI = {
       default:
         return "WEEEEEED"
     } 
+  },
+  clear: () => {
+    TrulieveAPI.chartLocations = [];
+    TrulieveAPI.chartstocks = [];
   }
 
 }
