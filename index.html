@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script src="jquery-3.4.1.min.js"></script>
+        <script src="TrulieveAPI.js"></script>
+        <script src="charts.js"></script>
+    </head>
+    <body>
+            <canvas id="myChart"></canvas>
+            <script>
+                // TrulieveAPI.getItemInventory(8,"FINP-FLJ-S-4")
+                //     .done((d) => {
+                //         var deets = JSON.parse(d);
+                //         if (deets.success == "true") alert("success: " + deets.success +" Stock: " + deets.stock);
+                //         if (deets.success == "false") alert("success: " + deets.success +" Error: " + deets.error);
+                //     });
+                    TrulieveAPI.getItemMultiInventory("FINP-FLJ-S-4")
+                    .done((d) => {
+                        var deets = JSON.parse(d);
+                        deets.forEach(element => {
+                            TrulieveAPI.chartLocations.push(TrulieveAPI.getLocationName(element.id));
+                            TrulieveAPI.chartstocks.push(element.stock);
+                            charts.makeBarChart('myChart',"FINP-FLJ-S-4");
+                        });
+                    })
+            </script>
+    </body>
+</html>
