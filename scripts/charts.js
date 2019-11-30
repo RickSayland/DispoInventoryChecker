@@ -33,9 +33,13 @@ var charts = {
         .done((d) => {
             var deets = JSON.parse(d);
             deets.forEach(element => {
-                 if (document.getElementById('chkHideNegative').checked && element.stock <= 0 )
+                if (document.getElementById('chkHideUnknownStores').checked && (element.id == 43 || element.id == 29 || element.id == 34 || element.id == 46 || element.id == 47 || element.id == 48 ))
                 {
-
+                    //skip
+                }
+                else if (document.getElementById('chkHideNegative').checked && element.stock <= 0 )
+                {
+                    //skip
                 }
                 else
                 {
