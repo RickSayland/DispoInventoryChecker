@@ -3,6 +3,7 @@ var TrulieveAPI = {
   baseURI: "https://www.trulieve.com/mjf/?action=",
   chartLocations: [],
   chartstocks: [],
+  chartStockColors: [],
 
   getItemInventory: (mjf_location_id, mjf_sku) => {
     return $.get( TrulieveAPI.baseURI+ "inventory&mjf_location_id=" + mjf_location_id + "&mjf_sku=" + mjf_sku, function( data ) {
@@ -131,6 +132,25 @@ var TrulieveAPI = {
       case 27:
         return "West Palm Beach"
         break;
+      //COMMING SOON
+      case 43:
+        return "Brandon"
+        break;
+      case 29:
+        return "Clearwater Call Center"
+        break;
+      case 34:
+        return "Lakeland"
+        break;
+      case 46:
+        return "Orange Park"
+        break;
+      case 47:
+        return "Orlando Colonial"
+        break;
+      case 48:
+        return "Orlando Millenia"
+        break;
       default:
         return locationId
     } 
@@ -170,6 +190,7 @@ var TrulieveAPI = {
   clear: () => {
     TrulieveAPI.chartLocations = [];
     TrulieveAPI.chartstocks = [];
+    TrulieveAPI.chartStockColors = [];
   }
 
 }

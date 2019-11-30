@@ -44,10 +44,6 @@
                             <input type="checkbox" class="custom-control-input" id="chkHideNegative">
                             <label class="custom-control-label" for="chkHideNegative">Show in stock only</label>
                     </div>
-                    <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="chkHideUnknownStores">
-                            <label class="custom-control-label" for="chkHideUnknownStores">Hide unknown stores</label>
-                    </div>
                 </div>
                 <div class="col-10">
                     <div>
@@ -64,7 +60,9 @@
                         var deets = JSON.parse(d);
                         deets.forEach(element => {
                             TrulieveAPI.chartLocations.push(TrulieveAPI.getLocationName(element.id));
-                            TrulieveAPI.chartstocks.push(element.stock);                          
+                            TrulieveAPI.chartstocks.push(element.stock);
+                            if (element.stock > 0 ) TrulieveAPI.chartStockColors.push("green");
+                            if (element.stock <= 0 ) TrulieveAPI.chartStockColors.push("red") ;                          
                         });
                     })
                     .always(() => {

@@ -13,7 +13,7 @@ var charts = {
             labels: labelData,
             datasets: [{
                 label: TrulieveAPI.getProductName("FINP-ROS-1G-I-15"),
-                backgroundColor: 'rgb(255, 99, 132)',
+                backgroundColor: TrulieveAPI.chartStockColors,
                 borderColor: 'rgb(255, 99, 132)',
                 data: dataData
             }]
@@ -33,18 +33,16 @@ var charts = {
         .done((d) => {
             var deets = JSON.parse(d);
             deets.forEach(element => {
-                if (document.getElementById('chkHideUnknownStores').checked && (element.id == 43 || element.id == 29 || element.id == 34 || element.id == 46 || element.id == 47 || element.id == 48 ))
-                {
-                    //skip
-                }
-                else if (document.getElementById('chkHideNegative').checked && element.stock <= 0 )
+                if (document.getElementById('chkHideNegative').checked && element.stock <= 0 )
                 {
                     //skip
                 }
                 else
                 {
                     TrulieveAPI.chartLocations.push(TrulieveAPI.getLocationName(element.id));
-                    TrulieveAPI.chartstocks.push(element.stock); 
+                    TrulieveAPI.chartstocks.push(element.stock);
+                    if (element.stock > 0 ) TrulieveAPI.chartStockColors.push("green");
+                    if (element.stock <= 0 ) TrulieveAPI.chartStockColors.push("red") ;
                 }                          
             });
         })
@@ -53,7 +51,7 @@ var charts = {
                 labels: TrulieveAPI.chartLocations,
                 datasets: [{
                     label: TrulieveAPI.getProductName(SKU),
-                    backgroundColor: 'rgb(255, 99, 132)',
+                    backgroundColor: TrulieveAPI.chartStockColors,
                     borderColor: 'rgb(255, 99, 132)',
                     data: TrulieveAPI.chartstocks
                 }]
